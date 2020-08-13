@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		@font-face {
+			  font-family: "goodft";
+			  src: url("futura.ttf");
+		 }
+		.fullscreenDiv {
+			background-color: #e8e8e8;
+			width: 100%;
+			height: auto;
+			bottom: 0px;
+			top: 0px;
+			left: 0;
+			position: absolute;
+		}
+		.center {
+			//display: inline-block;
+			position: absolute;
+			top: 0; right: 0; bottom: 0; left: 0;
+			margin: auto;
+			width: 450px;	
+			height: 150px;
+			//top: 50%;
+			//left: 50%;
+			//border:1px solid black;
+			box-shadow: 10px 10px 10px #888888;	
+		}​
+    </style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('#cad').bind('input', function() { 
+				var type = 2.09;
+				var e = document.getElementById("currency");
+				var value = e.options[e.selectedIndex].value;
+				if (value == "CA") {
+					type = 2.09;
+				}
+				if (value == "US") {
+					type = 1.68
+				}
+
+				$(this).val() // get the current value of the input field.
+				$("#jrc").val(Math.floor($("#cad").val()/type))
+				return;
+			});
+			$('#jrc').bind('input', function() { 
+				var type = 2.5;
+				var e = document.getElementById("currency");
+				var value = e.options[e.selectedIndex].value;
+				if (value == "CA") {
+					type = 2.5;
+				}
+				if (value == "US") {
+					type = 1.68;
+				}
+
+				$(this).val() // get the current value of the input field.
+
+				$("#cad").val(Math.round($("#jrc").val()*type*100)/100)
+				return;
+			});
+		});
+		function changing() {
+			var type = 2.5;
+			var e = document.getElementById("currency");
+			var value = e.options[e.selectedIndex].value;
+			if (value == "CA") {
+				type = 2.5;
+				$("#cad").attr("placeholder", "$CAD");
+			}
+			if (value == "US") {
+				type = 1.68;
+				$("#cad").attr("placeholder", "$USD");
+			}
+			$("#jrc").val(Math.floor($("#cad").val()/type))
+		}
+
+	</script>
+</head>
+<body style="font-size:13pt;font-family:goodft;">
+	<div class='fullscreenDiv'>
+
+		<center><img src="logo.png" alt="" style="width:250px;height:250px;margin-top:2%;"/></center>
+		<br><center>"Some say the biggest turning point in a man's life is the day he goes from buying junior chickens to McChickens" - Devon Mack
+		<div class="center">
+			<input type="number" name="cad" id="cad" min="0" max="999999999" placeholder="$CAD" style="font-size:30pt;width:69%;height:45%;font-family:goodft;"/>
+			<select style="font-family:goodft;font-size:30pt;width:28%;height:49%" id="currency" onchange="changing()">
+				<option value="CA">$CAD</option>
+				<option value="US">$USD</option>
+			</select>
+		<div>
+	</div>
+	<input type="number" id="jrc" placeholder="JrC" min="0" style="font-size:30pt;width:69%;height:45%;font-family:goodft;"/>
+	<select style="font-family:goodft;font-size:30pt;width:28%;height:50%">
+		<option value="CA">JrC</option>
+	</select>
+</body>
+</html>
