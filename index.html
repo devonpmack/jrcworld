@@ -32,11 +32,11 @@
 	<script>
 		$(document).ready(function(){
 			$('#cad').bind('input', function() { 
-				var type = 2.5;
+				var type = 3.38;
 				var e = document.getElementById("currency");
 				var value = e.options[e.selectedIndex].value;
 				if (value == "CA") {
-					type = 2.5;
+					type = 3.38;
 				}
 				if (value == "US") {
 					type = 1.68
@@ -47,11 +47,11 @@
 				return;
 			});
 			$('#jrc').bind('input', function() { 
-				var type = 2.5;
+				var type = 3.38;
 				var e = document.getElementById("currency");
 				var value = e.options[e.selectedIndex].value;
 				if (value == "CA") {
-					type = 2.5;
+					type = 3.38;
 				}
 				if (value == "US") {
 					type = 1.68;
@@ -64,11 +64,11 @@
 			});
 		});
 		function changing() {
-			var type = 2.5;
+			var type = 3.38;
 			var e = document.getElementById("currency");
 			var value = e.options[e.selectedIndex].value;
 			if (value == "CA") {
-				type = 2.5;
+				type = 3.38;
 				$("#cad").attr("placeholder", "$CAD");
 			}
 			if (value == "US") {
